@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Kinky History — little slave girl's DRU Final Presentation</title>
+<title>A Kinky History — DRU Final Presentation 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,602 +17,469 @@
     flex-direction: column;
   }
 
-  .slideshow {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-  }
+  .slideshow { flex: 1; position: relative; overflow: hidden; }
 
   .slide {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    position: absolute; inset: 0;
     display: none;
-    padding: 40px 60px;
     flex-direction: column;
     justify-content: center;
   }
   .slide.active { display: flex; }
 
-  /* ---- TITLE SLIDE ---- */
+  /* ── TITLE ── */
   .slide-title {
     background: radial-gradient(ellipse at 30% 50%, #1a0505 0%, #0d0d1a 60%, #0a0a0a 100%);
     align-items: center;
     text-align: center;
+    padding: 40px 60px;
   }
   .slide-title h1 {
-    font-size: 3.2em;
+    font-size: 3.4em;
     color: #c8102e;
     text-shadow: 0 0 60px rgba(200,16,46,0.5);
     letter-spacing: 3px;
     margin-bottom: 0.2em;
   }
-  .slide-title .subtitle {
-    font-size: 1.25em;
-    color: #c8a882;
-    font-style: italic;
-    margin-bottom: 0.4em;
-  }
-  .slide-title .presenter {
-    font-size: 0.85em;
-    color: #666;
-    margin-bottom: 2.5em;
-    letter-spacing: 1px;
-  }
-  .divider {
-    width: 120px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #c8102e, transparent);
-    margin: 0 auto 2em;
-  }
+  .slide-title .subtitle { font-size: 1.2em; color: #c8a882; font-style: italic; margin-bottom: 0.4em; }
+  .slide-title .presenter { font-size: 0.82em; color: #555; letter-spacing: 1px; margin-bottom: 2em; }
+  .hairline { width: 120px; height: 1px; background: linear-gradient(to right, transparent, #c8102e, transparent); margin: 0 auto 2em; }
 
-  /* Timeline row on title */
   .timeline-row {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 920px;
-    position: relative;
-    margin-top: 0.5em;
+    display: flex; align-items: flex-start; width: 100%; max-width: 940px; position: relative; margin-top: 0.5em;
   }
   .timeline-row::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 5%;
-    right: 5%;
-    height: 1px;
+    content: ''; position: absolute; top: 10px; left: 5%; right: 5%; height: 1px;
     background: linear-gradient(to right, transparent, #3a1a1a 10%, #3a1a1a 90%, transparent);
   }
-  .tl-item {
-    flex: 1;
-    text-align: center;
-    padding-top: 26px;
-    position: relative;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .tl-item:hover { opacity: 0.8; }
+  .tl-item { flex: 1; text-align: center; padding-top: 26px; position: relative; cursor: pointer; }
+  .tl-item:hover .tl-dot { box-shadow: 0 0 14px rgba(200,16,46,0.9); }
   .tl-dot {
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #c8102e;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(200,16,46,0.6);
+    position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+    width: 12px; height: 12px; background: #c8102e; border-radius: 50%;
+    box-shadow: 0 0 8px rgba(200,16,46,0.6); transition: box-shadow 0.2s;
   }
-  .tl-year {
-    display: block;
-    font-size: 0.6em;
-    color: #c8102e;
-    font-family: 'Courier New', monospace;
-    margin-bottom: 3px;
-  }
-  .tl-label {
-    font-size: 0.58em;
-    color: #999;
-    line-height: 1.3;
-  }
+  .tl-year { display: block; font-size: 0.6em; color: #c8102e; font-family: 'Courier New', monospace; margin-bottom: 2px; }
+  .tl-label { font-size: 0.56em; color: #888; line-height: 1.3; }
 
-  /* ---- SUBJECT SLIDES ---- */
+  /* ── SUBJECT SLIDES ── */
   .slide-subject {
     background: linear-gradient(170deg, #0e0a0a 0%, #0a0a10 100%);
+    flex-direction: row;
   }
 
-  .slide-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #2a1515;
-    padding-bottom: 16px;
-  }
-  .slide-num {
-    background: #c8102e;
-    color: #fff;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1em;
-    font-weight: bold;
+  .slide-image {
+    width: 42%;
     flex-shrink: 0;
-    margin-top: 4px;
+    position: relative;
+    overflow: hidden;
   }
-  .slide-header-text { flex: 1; }
-  .slide-era {
-    font-size: 0.75em;
-    color: #c8102e;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
+  .slide-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
   }
-  .slide-subject h2 {
-    font-size: 1.9em;
-    color: #f0e6d3;
-    line-height: 1.2;
+  .img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1a0a0a, #0a0a1a);
+    display: flex; align-items: center; justify-content: center;
+    color: #333; font-size: 0.8em; font-style: italic;
   }
-  .slide-category {
-    font-size: 0.68em;
-    color: #666;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .slide-tagline {
-    font-size: 0.95em;
-    color: #c8a882;
-    font-style: italic;
-    margin-bottom: 16px;
-  }
-  .slide-body {
-    font-size: 0.88em;
-    line-height: 1.72;
-    color: #cdbfaf;
-    columns: 2;
-    column-gap: 36px;
-  }
-  .slide-body.one-col { columns: 1; }
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 16px;
-  }
-  .chip {
-    background: rgba(200,16,46,0.12);
-    border: 1px solid rgba(200,16,46,0.25);
-    color: #d4b0b0;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75em;
+  .slide-image::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, transparent 80%, #0e0a0a 100%);
+    pointer-events: none;
   }
 
-  /* ---- CONCLUSION ---- */
+  .slide-content {
+    flex: 1;
+    padding: 36px 44px 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide-num-badge {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  }
+  .badge-circle {
+    background: #c8102e; color: #fff; width: 28px; height: 28px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75em; font-weight: bold; flex-shrink: 0;
+  }
+  .badge-era {
+    font-size: 0.72em; color: #c8102e; font-family: 'Courier New', monospace; letter-spacing: 1px;
+  }
+
+  .slide-subject h2 {
+    font-size: 1.75em; color: #f0e6d3; line-height: 1.2; margin-bottom: 4px;
+  }
+  .slide-cat {
+    font-size: 0.65em; color: #555; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+  }
+
+  .bullets {
+    list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;
+  }
+  .bullets li {
+    font-size: 0.92em; line-height: 1.5; color: #cdbfaf;
+    padding-left: 18px; position: relative;
+  }
+  .bullets li::before {
+    content: '▸'; position: absolute; left: 0; color: #c8102e; font-size: 0.85em; top: 1px;
+  }
+  .bullets li strong { color: #e8d8c4; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    background: rgba(200,16,46,0.1); border: 1px solid rgba(200,16,46,0.2);
+    color: #b89090; padding: 3px 10px; border-radius: 14px; font-size: 0.7em;
+  }
+
+  /* ── CONCLUSION ── */
   .slide-conclusion {
     background: radial-gradient(ellipse at 70% 40%, #0d0515 0%, #10080a 50%, #0a0a0a 100%);
-    align-items: center;
-    text-align: center;
+    align-items: center; text-align: center; padding: 40px 60px;
   }
-  .slide-conclusion h2 {
-    font-size: 2.6em;
-    color: #c8102e;
-    text-shadow: 0 0 40px rgba(200,16,46,0.3);
-    margin-bottom: 0.6em;
-  }
-  .slide-conclusion .quote {
-    max-width: 680px;
-    font-size: 1.05em;
-    line-height: 1.85;
-    color: #c8a882;
-    font-style: italic;
-    margin-bottom: 1.5em;
-  }
-  .slide-conclusion .byline {
-    font-size: 0.8em;
-    color: #555;
-    letter-spacing: 1px;
-  }
+  .slide-conclusion h2 { font-size: 2.6em; color: #c8102e; text-shadow: 0 0 40px rgba(200,16,46,0.3); margin-bottom: 0.5em; }
+  .slide-conclusion .quote { max-width: 680px; font-size: 1.05em; line-height: 1.85; color: #c8a882; font-style: italic; margin-bottom: 1.5em; }
+  .slide-conclusion .byline { font-size: 0.78em; color: #444; letter-spacing: 1px; }
 
-  /* ---- NAV ---- */
+  /* ── NAV ── */
   .nav {
-    background: #080808;
-    border-top: 1px solid #1a1a1a;
-    padding: 10px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
+    background: #060606; border-top: 1px solid #1a1a1a;
+    padding: 9px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
   }
   .nav button {
-    background: #120808;
-    border: 1px solid #2a1515;
-    color: #c8a882;
-    padding: 7px 22px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.88em;
-    font-family: inherit;
+    background: #100808; border: 1px solid #281414; color: #c8a882;
+    padding: 6px 20px; border-radius: 4px; cursor: pointer; font-size: 0.86em; font-family: inherit;
     transition: all 0.15s;
   }
-  .nav button:hover:not(:disabled) { background: #1e0a0a; border-color: #c8102e; }
-  .nav button:disabled { opacity: 0.3; cursor: default; }
+  .nav button:hover:not(:disabled) { background: #1c0a0a; border-color: #c8102e; }
+  .nav button:disabled { opacity: 0.25; cursor: default; }
   .nav .center { text-align: center; flex: 1; }
-  .nav .progress-text { font-size: 0.8em; color: #555; margin-bottom: 5px; }
-  .nav .progress-text span { color: #c8102e; font-weight: bold; }
+  .nav .pg { font-size: 0.78em; color: #444; margin-bottom: 4px; }
+  .nav .pg span { color: #c8102e; font-weight: bold; }
   .dots { display: flex; justify-content: center; gap: 5px; }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #2a2a2a;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #222; cursor: pointer; transition: background 0.2s; }
   .dot.active { background: #c8102e; }
 </style>
 </head>
 <body>
-
 <div class="slideshow" id="ss">
 
-<!-- ===== SLIDE 1: TITLE ===== -->
+<!-- SLIDE 1: TITLE -->
 <div class="slide slide-title active" id="slide-1">
   <h1>A Kinky History</h1>
   <div class="subtitle">10 Subjects That Shaped Modern BDSM</div>
   <div class="presenter">little slave girl 🔗 &nbsp;·&nbsp; Dark Rose University Final Examination &nbsp;·&nbsp; 2026</div>
-  <div class="divider"></div>
+  <div class="hairline"></div>
   <div class="timeline-row">
-    <div class="tl-item" onclick="goTo(2)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">1740s</span>
-      <span class="tl-label">Marquis<br>de Sade</span>
-    </div>
-    <div class="tl-item" onclick="goTo(3)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">1836</span>
-      <span class="tl-label">Sacher-<br>Masoch</span>
-    </div>
-    <div class="tl-item" onclick="goTo(4)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">c.1600s</span>
-      <span class="tl-label">Kinbaku/<br>Shibari</span>
-    </div>
-    <div class="tl-item" onclick="goTo(5)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">b. 1920</span>
-      <span class="tl-label">Tom of<br>Finland</span>
-    </div>
-    <div class="tl-item" onclick="goTo(6)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">b. 1923</span>
-      <span class="tl-label">Bettie<br>Page</span>
-    </div>
-    <div class="tl-item" onclick="goTo(7)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">b. 1930</span>
-      <span class="tl-label">Fakir<br>Musafar</span>
-    </div>
-    <div class="tl-item" onclick="goTo(8)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">1971</span>
-      <span class="tl-label">TES<br>Org.</span>
-    </div>
-    <div class="tl-item" onclick="goTo(9)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">1978</span>
-      <span class="tl-label">Samois</span>
-    </div>
-    <div class="tl-item" onclick="goTo(10)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">20th C.</span>
-      <span class="tl-label">Pony<br>Play</span>
-    </div>
-    <div class="tl-item" onclick="goTo(11)">
-      <div class="tl-dot"></div>
-      <span class="tl-year">1980s</span>
-      <span class="tl-label">High<br>Protocol</span>
-    </div>
+    <div class="tl-item" onclick="goTo(2)"><div class="tl-dot"></div><span class="tl-year">1740s</span><span class="tl-label">Marquis<br>de Sade</span></div>
+    <div class="tl-item" onclick="goTo(3)"><div class="tl-dot"></div><span class="tl-year">1836</span><span class="tl-label">Sacher-<br>Masoch</span></div>
+    <div class="tl-item" onclick="goTo(4)"><div class="tl-dot"></div><span class="tl-year">c.1600s</span><span class="tl-label">Kinbaku/<br>Shibari</span></div>
+    <div class="tl-item" onclick="goTo(5)"><div class="tl-dot"></div><span class="tl-year">b.1920</span><span class="tl-label">Tom of<br>Finland</span></div>
+    <div class="tl-item" onclick="goTo(6)"><div class="tl-dot"></div><span class="tl-year">b.1923</span><span class="tl-label">Bettie<br>Page</span></div>
+    <div class="tl-item" onclick="goTo(7)"><div class="tl-dot"></div><span class="tl-year">b.1930</span><span class="tl-label">Fakir<br>Musafar</span></div>
+    <div class="tl-item" onclick="goTo(8)"><div class="tl-dot"></div><span class="tl-year">1971</span><span class="tl-label">TES<br>Org.</span></div>
+    <div class="tl-item" onclick="goTo(9)"><div class="tl-dot"></div><span class="tl-year">1978</span><span class="tl-label">Samois</span></div>
+    <div class="tl-item" onclick="goTo(10)"><div class="tl-dot"></div><span class="tl-year">20th C.</span><span class="tl-label">Pony<br>Play</span></div>
+    <div class="tl-item" onclick="goTo(11)"><div class="tl-dot"></div><span class="tl-year">1980s</span><span class="tl-label">High<br>Protocol</span></div>
   </div>
 </div>
 
-<!-- ===== SLIDE 2: MARQUIS DE SADE ===== -->
+<!-- SLIDE 2: MARQUIS DE SADE -->
 <div class="slide slide-subject" id="slide-2">
-  <div class="slide-header">
-    <div class="slide-num">1</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1740 – 1814</div>
-      <h2>Marquis de Sade</h2>
+  <div class="slide-image"><img src="images/slide-sade.jpg" alt="Marquis de Sade" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">1</div>
+      <span class="badge-era">1740 – 1814</span>
     </div>
-  </div>
-  <div class="slide-category">Historical Figure &nbsp;·&nbsp; Philosopher &amp; Author</div>
-  <div class="slide-tagline">"The Controversial Figure Who Named Sadism"</div>
-  <div class="slide-body">
-    Donatien Alphonse François, Marquis de Sade (1740–1814), was a French aristocrat, philosopher, and writer whose explicit erotic novels and libertine lifestyle profoundly shaped modern understandings of kink, power, and desire. His authored works like <em>The 120 Days of Sodom</em>, <em>Justine</em>, and <em>Philosophy in the Bedroom</em> graphically explored extreme sadism, orgies, torture, and philosophical critiques of religion, morality, and authority — often blending pornography with radical Enlightenment ideas about freedom and the rejection of societal norms.
-    <br><br>
-    The term "sadism" derives directly from his name, coined in the 19th century by sexologist Richard von Krafft-Ebing to describe deriving pleasure from inflicting pain. De Sade's legacy endures in BDSM culture as a symbol of exploring taboos, power exchange, and the eroticization of suffering. Not a "tradition" in the organized sense, he represents the literary and philosophical roots of kink's fascination with extremes — reminding practitioners of the thin line between fantasy and ethics in consensual modern BDSM.
-  </div>
-  <div class="chips">
-    <span class="chip">Origin of "sadism"</span>
-    <span class="chip">Enlightenment-era philosophy</span>
-    <span class="chip">Power, desire &amp; transgression</span>
-    <span class="chip">Foundational BDSM literature</span>
+    <h2>Marquis de Sade</h2>
+    <div class="slide-cat">Historical Figure &nbsp;·&nbsp; Philosopher &amp; Author</div>
+    <ul class="bullets">
+      <li>French aristocrat, philosopher, and author whose libertine life shaped kink history</li>
+      <li>Works like <strong><em>120 Days of Sodom</em></strong> and <strong><em>Justine</em></strong> explored power, pain, and transgression through fiction</li>
+      <li>The term <strong>"sadism"</strong> was coined directly from his name by 19th-century sexologist Krafft-Ebing</li>
+      <li>Blended Enlightenment philosophy with extreme erotica — challenging religion, morality, and authority</li>
+      <li>Represents the literary and philosophical <strong>roots of modern BDSM</strong></li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Origin of "sadism"</span>
+      <span class="chip">Enlightenment transgression</span>
+      <span class="chip">Foundational BDSM literature</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 3: SACHER-MASOCH ===== -->
+<!-- SLIDE 3: SACHER-MASOCH -->
 <div class="slide slide-subject" id="slide-3">
-  <div class="slide-header">
-    <div class="slide-num">2</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1836 – 1895</div>
-      <h2>Leopold von Sacher-Masoch</h2>
+  <div class="slide-image"><img src="images/slide-sacher-masoch.jpg" alt="Sacher-Masoch" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">2</div>
+      <span class="badge-era">1836 – 1895</span>
     </div>
-  </div>
-  <div class="slide-category">Historical Figure &nbsp;·&nbsp; Author &amp; Nobleman</div>
-  <div class="slide-tagline">"The Writer Who Named Masochism"</div>
-  <div class="slide-body">
-    Leopold von Sacher-Masoch (1836–1895) was an Austrian nobleman, journalist, and author whose life and literature gave the world the term "masochism." Best known for his 1870 novella <em>Venus in Furs</em>, he explored themes of female dominance, male submission, fetishism (especially fur and whips), and voluntary slavery. The story follows Severin, who begs to be enslaved by a cruel woman named Wanda, with a formal contract granting her absolute power. These fantasies drew directly from his own experiences — he signed real-life contracts with lovers like Fanny Pistor, who wore furs and exercised control over him.
-    <br><br>
-    Psychiatrist Richard von Krafft-Ebing coined "masochism" in <em>Psychopathia Sexualis</em> (1886) using Sacher-Masoch's name as the archetype. Together with de Sade, they frame the twin pillars of sadomasochism. In kink history, Sacher-Masoch represents the shift from hidden desires to named identities — helping legitimize submission as a profound psychological and sensual pursuit, inspiring practitioners to explore dominance, surrender, and fetish ritual with awareness and consent. His legacy reminds us that kink often begins in the imagination before finding safe expression in reality.
-  </div>
-  <div class="chips">
-    <span class="chip">Origin of "masochism"</span>
-    <span class="chip"><em>Venus in Furs</em> (1870)</span>
-    <span class="chip">Female dominance &amp; male submission</span>
-    <span class="chip">Lived his own fantasies</span>
+    <h2>Leopold von Sacher-Masoch</h2>
+    <div class="slide-cat">Historical Figure &nbsp;·&nbsp; Author &amp; Nobleman</div>
+    <ul class="bullets">
+      <li>Austrian nobleman whose 1870 novella <strong><em>Venus in Furs</em></strong> defined submissive fantasy in literature</li>
+      <li>Story follows a man who signs a <strong>real submission contract</strong> with a dominant woman — drawn from his own life</li>
+      <li>The term <strong>"masochism"</strong> coined from his name by Krafft-Ebing in <em>Psychopathia Sexualis</em> (1886)</li>
+      <li>Together with de Sade, frames the <strong>twin pillars of sadomasochism</strong></li>
+      <li>Legitimized submission as a conscious, romantic, and deeply personal pursuit</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Origin of "masochism"</span>
+      <span class="chip"><em>Venus in Furs</em> (1870)</span>
+      <span class="chip">Lived his own fantasies</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 4: KINBAKU / SHIBARI ===== -->
+<!-- SLIDE 4: KINBAKU/SHIBARI -->
 <div class="slide slide-subject" id="slide-4">
-  <div class="slide-header">
-    <div class="slide-num">3</div>
-    <div class="slide-header-text">
-      <div class="slide-era">c. 1600s Edo Period → Present</div>
-      <h2>Kinbaku / Shibari</h2>
+  <div class="slide-image"><img src="images/slide-kinbaku.jpg" alt="Kinbaku / Shibari" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">3</div>
+      <span class="badge-era">c. 1600s Edo Period → Present</span>
     </div>
-  </div>
-  <div class="slide-category">Tradition &nbsp;·&nbsp; Japan</div>
-  <div class="slide-tagline">"The Art and History of Japanese Rope Bondage"</div>
-  <div class="slide-body">
-    Kinbaku ("tight binding") and shibari ("to tie") refer to the Japanese tradition of decorative and erotic rope bondage, rooted in the martial restraint technique <em>hojōjutsu</em> developed during Japan's Edo period. Over centuries this evolved from prisoner capture art into a formalized erotic practice emphasizing aesthetics, vulnerability, and psychological intimacy between rigger and model.
-    <br><br>
-    In the early 20th century, artist and writer <strong>Seiu Ito</strong> became the key figure transforming rope bondage into artistic and erotic expression. After WWII, kinbaku gained prominence through underground erotica magazines and performance culture, eventually spreading globally in the 1990s–2000s as "shibari." Today it is revered as both art form and intimate D/s ritual — emphasizing consent, safety, and the profound trust between partners. Its aesthetic philosophy: the beauty found in restraint, tension, and surrender has made it one of the most recognized and practiced kink traditions worldwide.
-  </div>
-  <div class="chips">
-    <span class="chip">Roots in hojōjutsu (Edo period)</span>
-    <span class="chip">Seiu Ito — key pioneer</span>
-    <span class="chip">Aesthetics of restraint</span>
-    <span class="chip">Global spread 1990s–2000s</span>
+    <h2>Kinbaku / Shibari</h2>
+    <div class="slide-cat">Tradition &nbsp;·&nbsp; Japan</div>
+    <ul class="bullets">
+      <li>Japanese rope bondage rooted in <strong>hojōjutsu</strong>, a martial restraint technique from the Edo period</li>
+      <li>Early 20th century artist <strong>Seiu Ito</strong> transformed rope tying into erotic and artistic expression</li>
+      <li>Emphasizes <strong>aesthetics, trust, and psychological intimacy</strong> between rigger and model</li>
+      <li>Spread globally in the 1990s–2000s under the name "shibari"</li>
+      <li>Now one of the most practiced and respected kink traditions worldwide</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Roots in Edo-period Japan</span>
+      <span class="chip">Seiu Ito — key pioneer</span>
+      <span class="chip">Art + intimacy + trust</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 5: TOM OF FINLAND ===== -->
+<!-- SLIDE 5: TOM OF FINLAND -->
 <div class="slide slide-subject" id="slide-5">
-  <div class="slide-header">
-    <div class="slide-num">4</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1920 – 1991</div>
-      <h2>Tom of Finland</h2>
+  <div class="slide-image"><img src="images/slide-tom-finland.jpg" alt="Tom of Finland" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">4</div>
+      <span class="badge-era">1920 – 1991</span>
     </div>
-  </div>
-  <div class="slide-category">Artist &nbsp;·&nbsp; LGBTQ+ Leather History</div>
-  <div class="slide-tagline">"The Artist Who Defined Leather Masculinity"</div>
-  <div class="slide-body">
-    Touko Valio Laaksonen (1920–1991), known as Tom of Finland, was a Finnish illustrator whose bold, erotic drawings of hypermasculine men in leather, uniforms, and boots became the definitive visual language of gay leather and kink culture. Beginning while serving in the Finnish Army during WWII, he created explicit homoerotic art that celebrated muscular, confident, dominant and submissive men engaged in explicit sexual and S/M scenarios — in defiant contrast to the era's shame-filled depictions of homosexuality.
-    <br><br>
-    Published in physique magazines like <em>Physique Pictorial</em> in the 1950s–60s, his work reached thousands of isolated gay men worldwide, offering validation and fantasy during decades of criminalization. He influenced leather bars, fashion, and identity by romanticizing biker gangs, cops, and leathermen as erotic ideals. Though he rarely depicted extreme pain, his art normalized power exchange and masculine submission and dominance. Posthumously, his foundation preserves his legacy — his imagery appears everywhere from pride parades to high fashion, and he helped build the modern leather community's proud, visible, confident self-image.
-  </div>
-  <div class="chips">
-    <span class="chip">Defined leather aesthetic</span>
-    <span class="chip">Gay male kink visibility</span>
-    <span class="chip"><em>Physique Pictorial</em> 1950s–60s</span>
-    <span class="chip">Foundation preserves legacy</span>
+    <h2>Tom of Finland</h2>
+    <div class="slide-cat">Artist &nbsp;·&nbsp; LGBTQ+ Leather History</div>
+    <ul class="bullets">
+      <li>Finnish illustrator (Touko Laaksonen) whose bold erotic art defined the <strong>visual language of gay leather culture</strong></li>
+      <li>Began drawing during WWII; published in physique magazines from the <strong>1950s onward</strong></li>
+      <li>Celebrated muscular men in leather, uniforms, and boots — defying the era's shame around homosexuality</li>
+      <li>Reached thousands of isolated gay men worldwide, offering <strong>validation and fantasy</strong> during criminalization</li>
+      <li>His foundation preserves his legacy; imagery appears in fashion, pride, and kink culture globally</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Defined leather aesthetic</span>
+      <span class="chip">Gay male kink visibility</span>
+      <span class="chip">Art as resistance</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 6: BETTIE PAGE ===== -->
+<!-- SLIDE 6: BETTIE PAGE -->
 <div class="slide slide-subject" id="slide-6">
-  <div class="slide-header">
-    <div class="slide-num">5</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1923 – 2008</div>
-      <h2>Bettie Page</h2>
+  <div class="slide-image"><img src="images/slide-bettie-page.jpg" alt="Bettie Page" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">5</div>
+      <span class="badge-era">1923 – 2008</span>
     </div>
-  </div>
-  <div class="slide-category">Icon &nbsp;·&nbsp; Model &amp; Cultural Pioneer</div>
-  <div class="slide-tagline">"The Queen of Pin-Up and Bondage Icon"</div>
-  <div class="slide-body">
-    Bettie Page (1923–2008) was an American model whose 1950s photographs popularized bondage, fetish, and BDSM imagery in mainstream-adjacent culture. With her signature jet-black bangs, playful smile, and fearless attitude, she became the ultimate pin-up girl while starring in thousands of images involving ropes, whips, high heels, corsets, and domination scenarios. Working with photographers like Irving Klaw and John Willie, she appeared in underground fetish films and magazines such as <em>Bizarre</em> and <em>Exotique</em>, transforming kink from hidden taboo into a stylized, accessible fantasy.
-    <br><br>
-    Her work emerged during a repressive post-WWII era when selling "obscene" materials could lead to legal trouble. Though she stepped away from modeling in the late 1950s due to personal struggles and religious conversion, her rediscovery in the 1980s–90s via nostalgia cemented her as a feminist sex symbol and kink pioneer. Bettie influenced fashion ("Bettie bangs"), comics, rockabilly, and modern BDSM aesthetics — representing the bridge between underground fetish photography and broader pop-culture acceptance, embodying playful eroticism and the idea that kink could be fun, theatrical, and empowering.
-  </div>
-  <div class="chips">
-    <span class="chip">1950s fetish photography</span>
-    <span class="chip">Irving Klaw &amp; John Willie</span>
-    <span class="chip">Pop-culture bridge</span>
-    <span class="chip">Feminist kink icon</span>
+    <h2>Bettie Page</h2>
+    <div class="slide-cat">Icon &nbsp;·&nbsp; Model &amp; Cultural Pioneer</div>
+    <ul class="bullets">
+      <li>1950s model who brought <strong>bondage and fetish imagery</strong> into mainstream-adjacent culture</li>
+      <li>Worked with photographers <strong>Irving Klaw</strong> and <strong>John Willie</strong> on underground fetish films and magazines</li>
+      <li>Her jet-black bangs, playful smile, and confidence became the ultimate <strong>kink pin-up icon</strong></li>
+      <li>Operated during a repressive post-WWII era when selling such material risked criminal prosecution</li>
+      <li>Rediscovered in the 1980s–90s as a <strong>feminist sex symbol</strong> — proved kink could be playful and empowering</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">1950s fetish photography</span>
+      <span class="chip">Irving Klaw &amp; John Willie</span>
+      <span class="chip">Feminist kink icon</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 7: FAKIR MUSAFAR ===== -->
+<!-- SLIDE 7: FAKIR MUSAFAR -->
 <div class="slide slide-subject" id="slide-7">
-  <div class="slide-header">
-    <div class="slide-num">6</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1930 – 2018</div>
-      <h2>Fakir Musafar</h2>
+  <div class="slide-image"><img src="images/slide-fakir.jpg" alt="Fakir Musafar" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">6</div>
+      <span class="badge-era">1930 – 2018</span>
     </div>
-  </div>
-  <div class="slide-category">Pioneer &nbsp;·&nbsp; Body Modification &amp; Ritual</div>
-  <div class="slide-tagline">"Father of Modern Primitives and Body Modification in Kink"</div>
-  <div class="slide-body">
-    Fakir Musafar (1930–2018), born Roland Loomis, was an American artist, shaman, and pioneer who brought body modification, ritual piercing, and extreme sensory practices into modern kink and spiritual contexts. He coined the term "Modern Primitives" to describe people who voluntarily use ancient-inspired body rituals — hook suspensions, flesh pulls, branding, scarification, and corsetry — for transformation, euphoria, and erotic exploration. His work blended pain, endurance, and altered states of consciousness, viewing the body as a site for personal ritual rather than mere fetish.
-    <br><br>
-    Influenced by global indigenous traditions, he appeared in the seminal 1989 documentary <em>Dances Sacred and Profane</em> and contributed to <em>RE/Search</em> magazine's <em>Modern Primitives</em> issue. Through his magazine <em>Body Play</em> and the Fakir Intensives, he emphasized safety, consent, and intention — helping legitimize heavy body play within leather and kink communities. Musafar represents the intersection of spirituality, endurance, and modification, expanding BDSM from sexual release to sacred ordeal and self-mastery. His legacy lives on in suspension groups, ritual scenes, and the widespread acceptance of piercings and tattoos as erotic and transformative tools.
-  </div>
-  <div class="chips">
-    <span class="chip">Coined "Modern Primitives"</span>
-    <span class="chip">Hook suspensions &amp; flesh rituals</span>
-    <span class="chip"><em>Body Play</em> magazine</span>
-    <span class="chip">Kink as sacred practice</span>
+    <h2>Fakir Musafar</h2>
+    <div class="slide-cat">Pioneer &nbsp;·&nbsp; Body Modification &amp; Ritual</div>
+    <ul class="bullets">
+      <li>Coined the term <strong>"Modern Primitives"</strong> for practitioners of voluntary ancient-inspired body rituals</li>
+      <li>Practiced hook suspensions, flesh pulls, branding, and corsetry as <strong>spiritual and erotic transformation</strong></li>
+      <li>Appeared in the seminal 1989 documentary <strong><em>Dances Sacred and Profane</em></strong></li>
+      <li>Published <em>Body Play</em> magazine and ran the <strong>Fakir Intensives</strong> workshops emphasizing safety and consent</li>
+      <li>Expanded BDSM from sexual release to <strong>sacred ordeal and self-mastery</strong></li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Coined "Modern Primitives"</span>
+      <span class="chip">Body as ritual site</span>
+      <span class="chip">Kink as sacred practice</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 8: TES ===== -->
+<!-- SLIDE 8: TES -->
 <div class="slide slide-subject" id="slide-8">
-  <div class="slide-header">
-    <div class="slide-num">7</div>
-    <div class="slide-header-text">
-      <div class="slide-era">Founded New York City, 1971</div>
-      <h2>TES — The Eulenspiegel Society</h2>
+  <div class="slide-image"><img src="images/slide-tes.jpg" alt="TES Organization" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">7</div>
+      <span class="badge-era">Founded New York City, 1971</span>
     </div>
-  </div>
-  <div class="slide-category">Organization &nbsp;·&nbsp; Community Building</div>
-  <div class="slide-tagline">"The Oldest BDSM Organization in the United States"</div>
-  <div class="slide-body">
-    The Eulenspiegel Society (TES) is the oldest BDSM organization in the United States, founded in New York City in 1971. Named after the prankster folk figure Till Eulenspiegel — symbolizing those who "march to a different drummer" — it began as a support group for masochists initiated by Pat Bond and Fran Nowve (Terry Kolb). At a time when BDSM was heavily stigmatized and often criminalized, TES provided safe, confidential spaces for education, discussion, and community-building, predating many modern kink groups and helping lay the groundwork for organized leather and pansexual BDSM scenes.
-    <br><br>
-    TES emphasized consent, self-acceptance, and liberation through S/M practices. It published the influential newsletter <em>Prometheus</em>, hosted workshops, parties, and classes ranging from technique to philosophy, and advocated against pathologization of kink. Surviving the culture wars and AIDS crisis, it remains active today as a nonprofit. Its legacy includes inspiring groups like the Society of Janus and promoting BDSM as a valid, joyful expression of human sexuality rather than deviance. TES helped transform isolated fetishes into a visible, supportive subculture centered on safety, skill-sharing, and community.
-  </div>
-  <div class="chips">
-    <span class="chip">Founded NYC 1971</span>
-    <span class="chip">Newsletter: <em>Prometheus</em></span>
-    <span class="chip">Against kink pathologization</span>
-    <span class="chip">Still active today</span>
+    <h2>TES — The Eulenspiegel Society</h2>
+    <div class="slide-cat">Organization &nbsp;·&nbsp; Community Building</div>
+    <ul class="bullets">
+      <li><strong>Oldest BDSM organization in the United States</strong>, founded in NYC in 1971 by Pat Bond and Fran Nowve</li>
+      <li>Named after Till Eulenspiegel — a prankster figure symbolizing those who <em>"march to a different drummer"</em></li>
+      <li>Provided safe, confidential spaces for education and community when BDSM was <strong>criminalized and stigmatized</strong></li>
+      <li>Published the influential newsletter <strong><em>Prometheus</em></strong>; hosted workshops, parties, and classes</li>
+      <li>Still active today — inspiring groups like the Society of Janus; championed kink as <strong>valid human expression</strong></li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Founded NYC 1971</span>
+      <span class="chip"><em>Prometheus</em> newsletter</span>
+      <span class="chip">Still active today</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 9: SAMOIS ===== -->
+<!-- SLIDE 9: SAMOIS -->
 <div class="slide slide-subject" id="slide-9">
-  <div class="slide-header">
-    <div class="slide-num">8</div>
-    <div class="slide-header-text">
-      <div class="slide-era">San Francisco, 1978 – 1983</div>
-      <h2>Samois</h2>
+  <div class="slide-image"><img src="images/slide-samois.jpg" alt="Samois" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">8</div>
+      <span class="badge-era">San Francisco, 1978 – 1983</span>
     </div>
-  </div>
-  <div class="slide-category">Organization &nbsp;·&nbsp; Lesbian Feminist BDSM</div>
-  <div class="slide-tagline">"Pioneering Lesbian Feminist BDSM"</div>
-  <div class="slide-body">
-    Samois was the first known public lesbian BDSM organization in the United States, founded in San Francisco in 1978. Emerging from the intersections of 1970s feminist, gay liberation, and sexual freedom movements, it provided a dedicated space for lesbian women interested in consensual sadomasochism at a time when such practices faced intense stigma even within feminist circles. Named after the estate of a dominatrix in the erotic novel <em>Story of O</em>, Samois challenged anti-pornography and anti-SM strands of radical feminism — arguing BDSM could be a feminist practice emphasizing consent, agency, power exchange, and pleasure as tools for empowerment rather than oppression.
-    <br><br>
-    Co-founded by figures like <strong>Pat Califia</strong> and <strong>Gayle Rubin</strong>, Samois hosted educational meetings, produced publications like the booklet <em>What Color Is Your Handkerchief?</em>, and organized parties and workshops. Though it disbanded in 1983, Samois left a lasting legacy: inspiring future leatherdyke and queer kink communities, advancing discussions on sexuality within feminism, and helping professionalize consent-focused education in BDSM. It remains a foundational chapter in queer kink history — proof that BDSM practices could align with progressive politics and feminist ideals.
-  </div>
-  <div class="chips">
-    <span class="chip">First lesbian BDSM org (US)</span>
-    <span class="chip">Pat Califia &amp; Gayle Rubin</span>
-    <span class="chip">The feminist sex wars</span>
-    <span class="chip">Named after <em>Story of O</em></span>
+    <h2>Samois</h2>
+    <div class="slide-cat">Organization &nbsp;·&nbsp; Lesbian Feminist BDSM</div>
+    <ul class="bullets">
+      <li><strong>First known public lesbian BDSM organization</strong> in the United States, San Francisco 1978</li>
+      <li>Co-founded by <strong>Pat Califia</strong> and <strong>Gayle Rubin</strong> — named after the dominatrix's estate in <em>Story of O</em></li>
+      <li>Challenged anti-SM strands of radical feminism — argued BDSM could be <strong>feminist and empowering</strong></li>
+      <li>Produced <strong><em>What Color Is Your Handkerchief?</em></strong> and organized educational workshops and parties</li>
+      <li>Disbanded in 1983 but left a lasting legacy, inspiring all <strong>queer leather and leatherdyke communities</strong></li>
+    </ul>
+    <div class="chips">
+      <span class="chip">First US lesbian BDSM org</span>
+      <span class="chip">Pat Califia &amp; Gayle Rubin</span>
+      <span class="chip">Feminist sex wars</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 10: PONY PLAY ===== -->
+<!-- SLIDE 10: PONY PLAY -->
 <div class="slide slide-subject" id="slide-10">
-  <div class="slide-header">
-    <div class="slide-num">9</div>
-    <div class="slide-header-text">
-      <div class="slide-era">20th Century – Present</div>
-      <h2>Pony Play</h2>
+  <div class="slide-image"><img src="images/slide-pony-play.jpg" alt="Pony Play" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">9</div>
+      <span class="badge-era">20th Century – Present</span>
     </div>
-  </div>
-  <div class="slide-category">Practice &nbsp;·&nbsp; Pet Play &amp; Animal Roleplay</div>
-  <div class="slide-tagline">"A Vibrant Pet Play Tradition in Kink"</div>
-  <div class="slide-body">
-    Pony play is a form of animal role-play within BDSM where one partner embodies a pony — often complete with harnesses, bits, hooves, tails, and carts — while the other acts as trainer, rider, or owner. It blends power exchange, physical exertion, objectification, and performance, emphasizing training, dressage, pulling, and obedience. Unlike simpler pet play, pony scenes frequently involve elaborate tack (gear), hoof boots, posture training, and public or competitive displays at kink events. It highlights themes of transformation, control, endurance, and erotic dehumanization, with strong overlaps to leather and fetish communities.
-    <br><br>
-    Roots trace to ancient erotic myths — the Roman <em>Metamorphoses</em> and the medieval tale of Aristotle being ridden by Phyllis — but modern consensual pony play emerged prominently in 20th-century BDSM and leather scenes, gaining visibility through fetish magazines, events, and queer kink culture. Today it thrives in dedicated communities with workshops on safe bit use, carriage pulling, and showmanship. Practitioners stress consent, negotiation, aftercare, and skill — treating it as both athletic performance and intimate D/s dynamic. Pony play celebrates creativity, discipline, and playful surrender.
-  </div>
-  <div class="chips">
-    <span class="chip">Elaborate tack &amp; gear</span>
-    <span class="chip">Ancient mythological roots</span>
-    <span class="chip">Competitive kink events</span>
-    <span class="chip">Athletic + intimate D/s</span>
+    <h2>Pony Play</h2>
+    <div class="slide-cat">Practice &nbsp;·&nbsp; Pet Play &amp; Animal Roleplay</div>
+    <ul class="bullets">
+      <li>One partner embodies a <strong>pony</strong> (harnesses, bits, tails, hooves); the other acts as trainer, rider, or owner</li>
+      <li>Blends <strong>power exchange, physical exertion, obedience, and performance</strong> — often including dressage and carriage pulling</li>
+      <li>Roots in ancient mythology; modern consensual practice emerged in <strong>20th-century BDSM and leather scenes</strong></li>
+      <li>Unique for its intersection of <strong>athletic performance</strong> and intimate D/s dynamic</li>
+      <li>Thrives today in dedicated communities with workshops on safe bit use, showmanship, and aftercare</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Elaborate tack &amp; gear</span>
+      <span class="chip">Ancient mythological roots</span>
+      <span class="chip">Athletic + intimate D/s</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 11: HIGH PROTOCOL ===== -->
+<!-- SLIDE 11: HIGH PROTOCOL -->
 <div class="slide slide-subject" id="slide-11">
-  <div class="slide-header">
-    <div class="slide-num">10</div>
-    <div class="slide-header-text">
-      <div class="slide-era">1980s – Present</div>
-      <h2>High Protocol BDSM</h2>
+  <div class="slide-image"><img src="images/slide-high-protocol.jpg" alt="High Protocol BDSM" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
+  <div class="slide-content">
+    <div class="slide-num-badge">
+      <div class="badge-circle">10</div>
+      <span class="badge-era">1980s – Present</span>
     </div>
-  </div>
-  <div class="slide-category">Practice &nbsp;·&nbsp; Old Guard Leather Tradition</div>
-  <div class="slide-tagline">"A Tradition of Structure and Ritual"</div>
-  <div class="slide-body">
-    High Protocol is a formalized tradition within BDSM emphasizing strict rules, etiquette, rituals, and hierarchical dynamics — often seen in Master/slave (M/s) or 24/7 power exchange relationships. Practitioners adopt precise behaviors: specific forms of address ("Sir," "Master," "Ma'am"), postures (kneeling, eyes lowered), service rituals, speech restrictions, and daily protocols governing everything from clothing and movement to meal service and punishment. It values discipline, mindfulness, and deep surrender, transforming everyday life into a continuous expression of power exchange. High Protocol scenes frequently incorporate formal inspections, tea ceremonies, bootblacking, or extended positions as meditative or devotional acts.
-    <br><br>
-    Emerging from Old Guard leather traditions in the mid-20th century and evolving through pansexual BDSM communities in the 1980s–90s, it draws inspiration from military structure, Victorian etiquette, and intentional D/s philosophy. Key educators like Jack Rinella and organizations like MAsTer (Masters And slaves Together) have helped codify and teach it. While critics note its intensity can be psychologically demanding, proponents celebrate its capacity for profound intimacy, personal growth, and erotic tension through structure. Today it offers a counterpoint to casual "low protocol" play — prioritizing commitment, consistency, and transformative obedience.
-  </div>
-  <div class="chips">
-    <span class="chip">Old Guard leather roots</span>
-    <span class="chip">M/s &amp; 24/7 dynamics</span>
-    <span class="chip">Jack Rinella &amp; MAsTer network</span>
-    <span class="chip">Structure as devotion</span>
+    <h2>High Protocol BDSM</h2>
+    <div class="slide-cat">Practice &nbsp;·&nbsp; Old Guard Leather Tradition</div>
+    <ul class="bullets">
+      <li>Formalized tradition emphasizing <strong>strict rules, etiquette, rituals, and hierarchy</strong> — often in M/s or 24/7 relationships</li>
+      <li>Elements: specific honorifics, <strong>formal postures</strong> (kneeling, eyes lowered), speech restrictions, service rituals</li>
+      <li>Rooted in <strong>Old Guard leather traditions</strong>; refined through 1980s–90s pansexual BDSM communities</li>
+      <li>Key educators: <strong>Jack Rinella</strong> and organizations like MAsTer (Masters And slaves Together)</li>
+      <li>Transforms everyday life into a <strong>continuous devotional act</strong> — structure as profound intimacy</li>
+    </ul>
+    <div class="chips">
+      <span class="chip">Old Guard leather roots</span>
+      <span class="chip">M/s &amp; 24/7 dynamics</span>
+      <span class="chip">Structure as devotion</span>
+    </div>
   </div>
 </div>
 
-<!-- ===== SLIDE 12: CONCLUSION ===== -->
+<!-- SLIDE 12: CONCLUSION -->
 <div class="slide slide-conclusion" id="slide-12">
   <h2>From Taboo to Tradition</h2>
-  <div class="divider"></div>
+  <div class="hairline"></div>
   <p class="quote">
-    Across centuries and continents — from the salons of Enlightenment France to the leather bars of 1970s San Francisco, from Japanese rope aesthetics to the underground studios of Bettie Page — kink has always been a living conversation about power, consent, identity, and desire.
+    Across centuries and continents — from Enlightenment France to 1970s San Francisco, from Japanese rope aesthetics to the underground studios of Bettie Page — kink has always been a living conversation about power, consent, identity, and desire.
     <br><br>
     These ten subjects are not just history.<br>They are the roots of the world we play in today.
   </p>
-  <div class="byline">
-    Presented by little slave girl 🔗 &nbsp;·&nbsp; Dark Rose University Final Examination &nbsp;·&nbsp; 2026
-  </div>
+  <div class="byline">little slave girl 🔗 &nbsp;·&nbsp; Dark Rose University Final Examination &nbsp;·&nbsp; 2026</div>
 </div>
 
-</div><!-- end .slideshow -->
+</div><!-- end slideshow -->
 
 <div class="nav">
   <button id="prevBtn" onclick="changeSlide(-1)" disabled>← Previous</button>
   <div class="center">
-    <div class="progress-text">Slide <span id="sNum">1</span> of <span id="sTotal">12</span></div>
+    <div class="pg">Slide <span id="sNum">1</span> of <span id="sTotal">12</span></div>
     <div class="dots" id="dots"></div>
   </div>
   <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
 </div>
 
 <script>
-  let cur = 1;
-  const total = 12;
+  let cur = 1; const total = 12;
   document.getElementById('sTotal').textContent = total;
-
   const dotsEl = document.getElementById('dots');
   for (let i = 1; i <= total; i++) {
     const d = document.createElement('div');
     d.className = 'dot' + (i === 1 ? ' active' : '');
-    d.onclick = () => goTo(i);
-    dotsEl.appendChild(d);
+    d.onclick = () => goTo(i); dotsEl.appendChild(d);
   }
-
   function goTo(n) {
     document.getElementById('slide-' + cur).classList.remove('active');
-    dotsEl.children[cur - 1].classList.remove('active');
+    dotsEl.children[cur-1].classList.remove('active');
     cur = n;
     document.getElementById('slide-' + cur).classList.add('active');
-    dotsEl.children[cur - 1].classList.add('active');
+    dotsEl.children[cur-1].classList.add('active');
     document.getElementById('sNum').textContent = cur;
     document.getElementById('prevBtn').disabled = cur === 1;
     document.getElementById('nextBtn').disabled = cur === total;
   }
-
-  function changeSlide(dir) {
-    const n = cur + dir;
-    if (n >= 1 && n <= total) goTo(n);
-  }
-
+  function changeSlide(dir) { const n = cur + dir; if (n >= 1 && n <= total) goTo(n); }
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
