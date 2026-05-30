@@ -2,25 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>A Kinky History — DRU Final Presentation 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
+  html, body {
     font-family: 'Georgia', serif;
     background: #0a0a0a;
     color: #f0e6d3;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
     display: flex;
     flex-direction: column;
   }
+  body {
+    min-height: 100svh;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+  }
 
-  .slideshow { flex: 1; position: relative; overflow: hidden; }
+  .slideshow { flex: 1; position: relative; overflow: hidden; min-height: 0; }
 
   .slide {
-    position: absolute; inset: 0;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -147,15 +152,19 @@
   /* ── NAV ── */
   .nav {
     background: #060606; border-top: 1px solid #1a1a1a;
-    padding: 9px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    padding: 10px 16px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    z-index: 100; position: relative;
   }
   .nav button {
     background: #100808; border: 1px solid #281414; color: #c8a882;
-    padding: 6px 20px; border-radius: 4px; cursor: pointer; font-size: 0.86em; font-family: inherit;
-    transition: all 0.15s;
+    padding: 10px 22px; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-family: inherit;
+    transition: all 0.15s; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    min-width: 90px;
   }
-  .nav button:hover:not(:disabled) { background: #1c0a0a; border-color: #c8102e; }
-  .nav button:disabled { opacity: 0.25; cursor: default; }
+  .nav button:hover:not(:disabled), .nav button:active:not(:disabled) { background: #1c0a0a; border-color: #c8102e; }
+  .nav button:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
   .nav .center { text-align: center; flex: 1; }
   .nav .pg { font-size: 0.78em; color: #444; margin-bottom: 4px; }
   .nav .pg span { color: #c8102e; font-weight: bold; }
@@ -484,6 +493,14 @@
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
   });
+
+  // Swipe support for mobile
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+  }, { passive: true });
 </script>
 </body>
 </html>
