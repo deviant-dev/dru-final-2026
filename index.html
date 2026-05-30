@@ -149,48 +149,40 @@
 
   /* ── POSTURE SLIDES ── */
   .slide-posture {
-    background: #05050a;
+    background: radial-gradient(ellipse at 50% 40%, #0d0818 0%, #08080e 60%, #0a0a0a 100%);
     align-items: center;
-    justify-content: center;
     text-align: center;
-    padding: 20px;
-    flex-direction: column;
+    justify-content: center;
+    padding: 40px 60px;
   }
-  .posture-header {
-    font-size: 0.7em; color: #555; letter-spacing: 3px; text-transform: uppercase;
-    margin-bottom: 8px;
+  .posture-label {
+    font-size: 0.65em;
+    color: #5a3a7a;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1.2em;
   }
   .posture-name {
-    font-size: 3.2em; color: #c8102e;
-    text-shadow: 0 0 40px rgba(200,16,46,0.35);
-    letter-spacing: 2px; margin-bottom: 6px;
-    line-height: 1;
+    font-size: 4em;
+    color: #c8a882;
+    letter-spacing: 4px;
+    text-shadow: 0 0 50px rgba(200,168,130,0.2);
+    margin-bottom: 0.3em;
+    font-style: italic;
+  }
+  .posture-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3a2a4a, transparent);
+    margin: 0.8em auto 1.2em;
   }
   .posture-desc {
-    font-size: 0.95em; color: #9a8878; font-style: italic;
-    max-width: 480px; line-height: 1.6; margin-bottom: 16px;
-  }
-  .posture-image-wrap {
-    width: min(340px, 80vw);
-    height: min(400px, 55vh);
-    position: relative;
-    flex-shrink: 0;
-  }
-  .posture-image-wrap img {
-    width: 100%; height: 100%; object-fit: contain;
-    filter: brightness(0.92);
-  }
-  .posture-note {
-    margin-top: 14px;
-    font-size: 0.72em; color: #3a3a3a; letter-spacing: 1px;
-    font-family: 'Courier New', monospace;
-    border: 1px solid #1a1a1a; padding: 4px 14px; border-radius: 12px;
-  }
-
-  @media (max-width: 700px) or (orientation: portrait) {
-    .posture-name { font-size: 2.2em; }
-    .posture-image-wrap { height: min(300px, 45vh); }
-    .posture-desc { font-size: 0.85em; }
+    font-size: 0.9em;
+    color: #6a5a4a;
+    line-height: 1.8;
+    max-width: 460px;
+    font-style: italic;
   }
 
   /* ── CONCLUSION ── */
@@ -224,6 +216,8 @@
   .dots { display: flex; justify-content: center; gap: 5px; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: #222; cursor: pointer; transition: background 0.2s; }
   .dot.active { background: #c8102e; }
+  .dot.posture-dot { background: #2a1a3a; }
+  .dot.posture-dot.active { background: #8a5aaa; }
 
   /* ── MOBILE: vertical stack, scrollable ── */
   @media (max-width: 700px), (orientation: portrait) {
@@ -264,6 +258,9 @@
     .slide-conclusion h2 { font-size: 1.9em; }
     .slide-conclusion .quote { font-size: 0.9em; }
 
+    .slide-posture { padding: 28px 24px; }
+    .posture-name { font-size: 2.8em; }
+
     .nav button { padding: 10px 14px; font-size: 0.84em; min-width: 76px; }
   }
 </style>
@@ -279,15 +276,15 @@
   <div class="hairline"></div>
   <div class="timeline-row">
     <div class="tl-item" onclick="goTo(2)"><div class="tl-dot"></div><span class="tl-year">1740s</span><span class="tl-label">Marquis<br>de Sade</span></div>
-    <div class="tl-item" onclick="goTo(3)"><div class="tl-dot"></div><span class="tl-year">1836</span><span class="tl-label">Sacher-<br>Masoch</span></div>
-    <div class="tl-item" onclick="goTo(4)"><div class="tl-dot"></div><span class="tl-year">c.1600s</span><span class="tl-label">Kinbaku/<br>Shibari</span></div>
-    <div class="tl-item" onclick="goTo(5)"><div class="tl-dot"></div><span class="tl-year">b.1920</span><span class="tl-label">Tom of<br>Finland</span></div>
-    <div class="tl-item" onclick="goTo(6)"><div class="tl-dot"></div><span class="tl-year">b.1923</span><span class="tl-label">Bettie<br>Page</span></div>
-    <div class="tl-item" onclick="goTo(7)"><div class="tl-dot"></div><span class="tl-year">b.1930</span><span class="tl-label">Fakir<br>Musafar</span></div>
-    <div class="tl-item" onclick="goTo(8)"><div class="tl-dot"></div><span class="tl-year">1971</span><span class="tl-label">TES<br>Org.</span></div>
-    <div class="tl-item" onclick="goTo(9)"><div class="tl-dot"></div><span class="tl-year">1978</span><span class="tl-label">Samois</span></div>
-    <div class="tl-item" onclick="goTo(10)"><div class="tl-dot"></div><span class="tl-year">20th C.</span><span class="tl-label">Pony<br>Play</span></div>
-    <div class="tl-item" onclick="goTo(11)"><div class="tl-dot"></div><span class="tl-year">1980s</span><span class="tl-label">High<br>Protocol</span></div>
+    <div class="tl-item" onclick="goTo(4)"><div class="tl-dot"></div><span class="tl-year">1836</span><span class="tl-label">Sacher-<br>Masoch</span></div>
+    <div class="tl-item" onclick="goTo(6)"><div class="tl-dot"></div><span class="tl-year">c.1600s</span><span class="tl-label">Kinbaku/<br>Shibari</span></div>
+    <div class="tl-item" onclick="goTo(8)"><div class="tl-dot"></div><span class="tl-year">b.1920</span><span class="tl-label">Tom of<br>Finland</span></div>
+    <div class="tl-item" onclick="goTo(10)"><div class="tl-dot"></div><span class="tl-year">b.1923</span><span class="tl-label">Bettie<br>Page</span></div>
+    <div class="tl-item" onclick="goTo(12)"><div class="tl-dot"></div><span class="tl-year">b.1930</span><span class="tl-label">Fakir<br>Musafar</span></div>
+    <div class="tl-item" onclick="goTo(13)"><div class="tl-dot"></div><span class="tl-year">1971</span><span class="tl-label">TES<br>Org.</span></div>
+    <div class="tl-item" onclick="goTo(14)"><div class="tl-dot"></div><span class="tl-year">1978</span><span class="tl-label">Samois</span></div>
+    <div class="tl-item" onclick="goTo(15)"><div class="tl-dot"></div><span class="tl-year">20th C.</span><span class="tl-label">Pony<br>Play</span></div>
+    <div class="tl-item" onclick="goTo(16)"><div class="tl-dot"></div><span class="tl-year">1980s</span><span class="tl-label">High<br>Protocol</span></div>
   </div>
 </div>
 
@@ -316,8 +313,16 @@
   </div>
 </div>
 
-<!-- SLIDE 3: SACHER-MASOCH -->
-<div class="slide slide-subject" id="slide-3">
+<!-- POSTURE: KNEEL -->
+<div class="slide slide-posture" id="slide-3">
+  <div class="posture-label">Position Prompt</div>
+  <div class="posture-name">Kneel</div>
+  <div class="posture-divider"></div>
+  <div class="posture-desc">Kneel with your back straight, knees together or hip-width apart, hands resting gently on your thighs, eyes forward.</div>
+</div>
+
+<!-- SLIDE 4: SACHER-MASOCH -->
+<div class="slide slide-subject" id="slide-4">
   <div class="slide-image"><img src="images/slide-sacher-masoch.jpg" alt="Sacher-Masoch" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -341,8 +346,16 @@
   </div>
 </div>
 
-<!-- SLIDE 4: KINBAKU/SHIBARI -->
-<div class="slide slide-subject" id="slide-4">
+<!-- POSTURE: BOW -->
+<div class="slide slide-posture" id="slide-5">
+  <div class="posture-label">Position Prompt</div>
+  <div class="posture-name">Bow</div>
+  <div class="posture-divider"></div>
+  <div class="posture-desc">From kneeling, lower your head slowly toward the floor, arms extended forward, palms flat — hold the reverence, then rise and return to present.</div>
+</div>
+
+<!-- SLIDE 6: KINBAKU/SHIBARI -->
+<div class="slide slide-subject" id="slide-6">
   <div class="slide-image"><img src="images/slide-kinbaku.jpg" alt="Kinbaku / Shibari" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -366,8 +379,16 @@
   </div>
 </div>
 
-<!-- SLIDE 5: TOM OF FINLAND -->
-<div class="slide slide-subject" id="slide-5">
+<!-- POSTURE: NADU -->
+<div class="slide slide-posture" id="slide-7">
+  <div class="posture-label">Position Prompt</div>
+  <div class="posture-name">Nadu</div>
+  <div class="posture-divider"></div>
+  <div class="posture-desc">Kneel with knees spread wide, back straight, shoulders back — palms resting face-up on your thighs, chin lifted, body open and offered.</div>
+</div>
+
+<!-- SLIDE 8: TOM OF FINLAND -->
+<div class="slide slide-subject" id="slide-8">
   <div class="slide-image"><img src="images/slide-tom-finland.jpg" alt="Tom of Finland" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -391,8 +412,16 @@
   </div>
 </div>
 
-<!-- SLIDE 6: BETTIE PAGE -->
-<div class="slide slide-subject" id="slide-6">
+<!-- POSTURE: PROSTRATE -->
+<div class="slide slide-posture" id="slide-9">
+  <div class="posture-label">Position Prompt</div>
+  <div class="posture-name">Prostrate</div>
+  <div class="posture-divider"></div>
+  <div class="posture-desc">Lower yourself fully to the floor face-down, arms stretched forward, forehead to the ground — complete surrender, held in stillness.</div>
+</div>
+
+<!-- SLIDE 10: BETTIE PAGE -->
+<div class="slide slide-subject" id="slide-10">
   <div class="slide-image"><img src="images/slide-bettie-page.jpg" alt="Bettie Page" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -416,8 +445,16 @@
   </div>
 </div>
 
-<!-- SLIDE 7: FAKIR MUSAFAR -->
-<div class="slide slide-subject" id="slide-7">
+<!-- POSTURE: PRESENT -->
+<div class="slide slide-posture" id="slide-11">
+  <div class="posture-label">Position Prompt</div>
+  <div class="posture-name">Present</div>
+  <div class="posture-divider"></div>
+  <div class="posture-desc">Stand with feet shoulder-width apart, chin lifted, shoulders back, arms slightly away from your sides — body offered, eyes forward, fully available.</div>
+</div>
+
+<!-- SLIDE 12: FAKIR MUSAFAR -->
+<div class="slide slide-subject" id="slide-12">
   <div class="slide-image"><img src="images/slide-fakir.jpg" alt="Fakir Musafar" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -441,8 +478,8 @@
   </div>
 </div>
 
-<!-- SLIDE 8: TES -->
-<div class="slide slide-subject" id="slide-8">
+<!-- SLIDE 13: TES -->
+<div class="slide slide-subject" id="slide-13">
   <div class="slide-image"><img src="images/slide-tes.jpg" alt="TES Organization" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -466,8 +503,8 @@
   </div>
 </div>
 
-<!-- SLIDE 9: SAMOIS -->
-<div class="slide slide-subject" id="slide-9">
+<!-- SLIDE 14: SAMOIS -->
+<div class="slide slide-subject" id="slide-14">
   <div class="slide-image"><img src="images/slide-samois.jpg" alt="Samois" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -491,8 +528,8 @@
   </div>
 </div>
 
-<!-- SLIDE 10: PONY PLAY -->
-<div class="slide slide-subject" id="slide-10">
+<!-- SLIDE 15: PONY PLAY -->
+<div class="slide slide-subject" id="slide-15">
   <div class="slide-image"><img src="images/slide-pony-play.jpg" alt="Pony Play" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -516,8 +553,8 @@
   </div>
 </div>
 
-<!-- SLIDE 11: HIGH PROTOCOL -->
-<div class="slide slide-subject" id="slide-11">
+<!-- SLIDE 16: HIGH PROTOCOL -->
+<div class="slide slide-subject" id="slide-16">
   <div class="slide-image"><img src="images/slide-high-protocol.jpg" alt="High Protocol BDSM" onerror="this.parentNode.innerHTML='<div class=img-placeholder>🎨</div>'"></div>
   <div class="slide-content">
     <div class="slide-num-badge">
@@ -541,60 +578,8 @@
   </div>
 </div>
 
-<!-- SLIDE 13: POSTURE — KNEEL -->
-<div class="slide slide-posture" id="slide-13">
-  <div class="posture-header">Elusive Grace — Posture Practice</div>
-  <div class="posture-name">Kneel</div>
-  <div class="posture-desc">Upright on both knees, back straight, hands resting on thighs. Eyes forward or lowered as directed.</div>
-  <div class="posture-image-wrap">
-    <img src="images/posture-kneel.jpg" alt="Kneel posture" onerror="this.style.display='none'">
-  </div>
-</div>
-
-<!-- SLIDE 14: POSTURE — BOW -->
-<div class="slide slide-posture" id="slide-14">
-  <div class="posture-header">Elusive Grace — Posture Practice</div>
-  <div class="posture-name">Bow</div>
-  <div class="posture-desc">From kneeling, fold forward — forehead toward the floor, arms extended or at sides, back curved in full deference.</div>
-  <div class="posture-image-wrap">
-    <img src="images/posture-bow.jpg" alt="Bow posture" onerror="this.style.display='none'">
-  </div>
-  <div class="posture-note">eyes down · presenter cues return</div>
-</div>
-
-<!-- SLIDE 15: POSTURE — NADU -->
-<div class="slide slide-posture" id="slide-15">
-  <div class="posture-header">Elusive Grace — Posture Practice</div>
-  <div class="posture-name">Nadu</div>
-  <div class="posture-desc">Wide-kneed kneeling, sitting back on heels. Palms open and upward on thighs. Back tall, head lifted, fully open and offered.</div>
-  <div class="posture-image-wrap">
-    <img src="images/posture-nadu.jpg" alt="Nadu posture" onerror="this.style.display='none'">
-  </div>
-</div>
-
-<!-- SLIDE 16: POSTURE — PROSTRATE -->
-<div class="slide slide-posture" id="slide-16">
-  <div class="posture-header">Elusive Grace — Posture Practice</div>
-  <div class="posture-name">Prostrate</div>
-  <div class="posture-desc">Full face-down — forehead to the floor, arms extended before her, completely surrendered. Total submission of body and will.</div>
-  <div class="posture-image-wrap">
-    <img src="images/posture-prostrate.jpg" alt="Prostrate posture" onerror="this.style.display='none'">
-  </div>
-  <div class="posture-note">eyes down · presenter cues return</div>
-</div>
-
-<!-- SLIDE 17: POSTURE — PRESENT -->
-<div class="slide slide-posture" id="slide-17">
-  <div class="posture-header">Elusive Grace — Posture Practice</div>
-  <div class="posture-name">Present</div>
-  <div class="posture-desc">Body offered for inspection — position as instructed. Still, exposed, and attentive. Waiting on His pleasure.</div>
-  <div class="posture-image-wrap">
-    <img src="images/posture-present.jpg" alt="Present posture" onerror="this.style.display='none'">
-  </div>
-</div>
-
-<!-- SLIDE 12: CONCLUSION -->
-<div class="slide slide-conclusion" id="slide-12">
+<!-- SLIDE 17: CONCLUSION -->
+<div class="slide slide-conclusion" id="slide-17">
   <h2>From Taboo to Tradition</h2>
   <div class="hairline"></div>
   <p class="quote">
@@ -610,19 +595,20 @@
 <div class="nav">
   <button id="prevBtn" onclick="changeSlide(-1)" disabled>← Previous</button>
   <div class="center">
-    <div class="pg">Slide <span id="sNum">1</span> of <span id="sTotal">12</span></div>
+    <div class="pg">Slide <span id="sNum">1</span> of <span id="sTotal">17</span></div>
     <div class="dots" id="dots"></div>
   </div>
   <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
 </div>
 
 <script>
+  const POSTURE_SLIDES = new Set([3,5,7,9,11]);
   let cur = 1; const total = 17;
   document.getElementById('sTotal').textContent = total;
   const dotsEl = document.getElementById('dots');
   for (let i = 1; i <= total; i++) {
     const d = document.createElement('div');
-    d.className = 'dot' + (i === 1 ? ' active' : '');
+    d.className = 'dot' + (i === 1 ? ' active' : '') + (POSTURE_SLIDES.has(i) ? ' posture-dot' : '');
     d.onclick = () => goTo(i); dotsEl.appendChild(d);
   }
   function goTo(n) {
